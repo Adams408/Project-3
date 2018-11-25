@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 /**
  * James Adams, Davian Glenn
- * November 7, 2018
- * Project 2
+ * November 25, 2018
+ * Project 3
  * Main.java
  */
 
@@ -12,10 +12,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Thank you for choosing United Airlines!\nWe currently have 1 flight to Greensboro from Newark(Flight 310) and 1 flight from Newark to Greensboro(Flight 320).");
+        System.out.println("Thank you for choosing United Airlines!\nWe currently have 2 flights form Greensboro to Newark(Flight 310) and 2 flight from Newark to Greensboro(Flight 320).");
 
-        Airplane flight310 = new Airplane(310, "Greensboro", "Newark", "8:00 AM", "9:30 AM", 180);
-        Airplane flight320 = new Airplane(320, "Newark", "Greensboro", "1:59 PM", "3:29 PM", 150);
+        Airplane flight310_1 = new Airplane(310, "Greensboro", "Newark", "December 6", "7:00 AM", 20);
+        Airplane flight310_2 = new Airplane(310, "Greensboro", "Newark", "December 6", "2:00 PM", 20);
+        Airplane flight320_1 = new Airplane(320, "Newark", "Greensboro", "December 6", "7:00 AM", 20);
+        Airplane flight320_2 = new Airplane(320, "Newark", "Greensboro", "December 6", "2:00 PM", 20);
 
         boolean run = true;
         while (run) {
@@ -24,16 +26,35 @@ public class Main {
             int flightNumber = in.nextInt();
             System.out.print("Enter the class you desire. Type 'E' for Economic, 'B' for Business, and 'F' for First-Class: ");
             char flightClass = in.next().charAt(0);
-            System.out.print("Input information for ticket.\nInput passenger name and departure date(Format: mm/dd/yyyy): ");
+            System.out.print("Input information for ticket.\nInput passenger name and departure Time(Format: 0:00 AM/PM): ");
             String name = in.next();
-            System.out.print("Input departure date(Format: mm/dd/yyyy): ");
-            String date = in.next();
+            String time = in.next();
 
             // determine which flight the ticket belongs to
-            if (flightNumber == 310) {
-                flight310.reserveUnitedTicket(name, flightClass, date);
-            } else {
-                flight320.reserveUnitedTicket(name, flightClass, date);
+            if (flightNumber == 310 && time.equalsIgnoreCase("7:00 AM")) {
+                try{
+                    flight310_1.purchaseTicket(name, flightClass);
+                }catch(allTicketSold ex) {
+                    System.out.println(ex.getMessage());
+                }
+            } else if (flightNumber == 310 && time.equalsIgnoreCase("2:00 PM")) {
+                try {
+                    flight310_2.purchaseTicket(name, flightClass);
+                } catch (allTicketSold ex) {
+                    System.out.println(ex.getMessage());
+                }
+            } else if (flightNumber == 320 && time.equalsIgnoreCase("7:00 AM")) {
+                try {
+                    flight320_1.purchaseTicket(name, flightClass);
+                } catch (allTicketSold ex) {
+                    System.out.println(ex.getMessage());
+                }
+            } else if (flightNumber == 320 && time.equalsIgnoreCase("2:00 PM")){
+                try{
+                    flight320_2.purchaseTicket(name, flightClass);
+                }catch(allTicketSold ex) {
+                    System.out.println(ex.getMessage());
+                }
             }
 
             // continue adding a new ticket
@@ -44,9 +65,13 @@ public class Main {
         }
 
         // print all the tickets in both flights
-        System.out.println("The tickets for flight 310: ");
-        flight310.print();
-        System.out.println("\n\nThe tickets for flight 320: ");
-        flight320.print();
+        System.out.println("The tickets for flight 310 #1: ");
+        flight310_1.print();
+        System.out.println("\n\nThe tickets for flight 310 #2: ");
+        flight310_2.print();
+        System.out.println("\n\nThe tickets for flight 320 #1: ");
+        flight320_1.print();
+        System.out.println("\n\nThe tickets for flight 320 #2: ");
+        flight320_2.print();
     }
 }

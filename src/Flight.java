@@ -1,28 +1,26 @@
 /**
  * James Adams, Davian Glenn
- * November 7, 2018
- * Project 2
+ * November 25, 2018
+ * Project 3
  * Flight.java
  */
 
-public class Flight extends Ticket{
+public class Flight extends Ticket {
+    private int flightNumber;
     private String startingCity;
     private String destinationCity;
-    private int flightNumber;
     private String departureDate;
     private String departureTime;
-    private String arrivalTime;
     private int price;
     private int seat;
 
-    public Flight(String name, char flightClass, String startingCity, String destinationCity, int flightNumber, String departureDate, String departureTime, String arrivalTime, int seat) {
+    public Flight(String name, char flightClass, int flightNumber, String startingCity, String destinationCity, String departureDate, String departureTime, int seat) {
         super(name, flightClass);
+        this.flightNumber = flightNumber;
         this.startingCity = startingCity;
         this.destinationCity = destinationCity;
-        this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
         this.price = super.Price();
         this.seat = seat;
     }
@@ -65,14 +63,6 @@ public class Flight extends Ticket{
 
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
-    }
-
-    public String getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
     }
 
     public int getPrice() {

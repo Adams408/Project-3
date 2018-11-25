@@ -1,7 +1,7 @@
 /**
  * James Adams, Davian Glenn
- * November 7, 2018
- * Project 2
+ * November 25, 2018
+ * Project 3
  * Ticket.java
  */
 
@@ -10,13 +10,14 @@ public class Ticket {
     private String name;
     private char flightClass;
     private int price;
+    private int seat;
 
     public Ticket(String name, char flightClass) {
         this.name = name;
         this.flightClass = flightClass;
     }
 
-    public int Price(){
+    public int Price(){ // price based on class chosen
         switch(this.flightClass){
             case 'E':
                 price = 300;
