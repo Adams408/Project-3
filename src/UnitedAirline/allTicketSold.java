@@ -1,8 +1,10 @@
+package UnitedAirline;
+
 /**
  * James Adams, Davian Glenn
  * November 25, 2018
  * Project 3
- * allTicketSold.java
+ * UnitedAirline.allTicketSold.java
  */
 
 public class allTicketSold extends Exception {
@@ -13,7 +15,6 @@ public class allTicketSold extends Exception {
     }
 
     /**
-     *
      * @param message error message
      */
     public allTicketSold(String message){
@@ -21,8 +22,7 @@ public class allTicketSold extends Exception {
     }
 
     /**
-     *
-     * @return message the error message to be displayed
+     * @return the error message to be displayed
      */
     @Override
     public String getMessage() {
