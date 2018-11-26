@@ -17,14 +17,6 @@ public class Airplane {
     private Flight[] flights;
     private int seat = 1;
 
-    /**
-     * @param flightNumber
-     * @param startingCity
-     * @param destinationCity
-     * @param departureDate
-     * @param departureTime
-     * @param numOfSeats
-     */
     public Airplane(int flightNumber, String startingCity, String destinationCity, String departureDate, String departureTime, int numOfSeats) {
         this.startingCity = startingCity;
         this.destinationCity = destinationCity;
@@ -45,9 +37,14 @@ public class Airplane {
         }
     }
 
+    public void returnTicket() {
+        flights[seat] = null;
+        seat--;
+    }
+
     public boolean airplaneFull() {
         for (Flight flight : flights) {
-            if (flight != null) {
+            if (flight == null) {
                 return false;
             }
         }
@@ -55,11 +52,10 @@ public class Airplane {
     }
     
     public void print() {
-        for (Flight flight : flights) {
-            if (flight != null) {
-                System.out.println("Name: " + flight.getName() +
-                        "\nDate: " + this.departureDate + " Time: " + this.departureTime + " Seat Number: " + this.seat +
-                        "\n$" + flight.getPrice());
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i] != null) {
+                System.out.println("Name: " + flights[i].getName() + "\nDate: " + this.departureDate + "\nTime: " + this.departureTime + "\nSeat Number: " + this.seat + "\nPrice: $" + flights[i].getPrice() +
+                        "\n---------------------------------------------");
             }
         }
     }

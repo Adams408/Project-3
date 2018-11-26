@@ -60,6 +60,19 @@ public class Main {
                 }
             }
 
+            System.out.print("Would you like to cancel your ticket, please enter y / n: ");
+            if (in.next().equalsIgnoreCase("n")) {
+                if (flightNumber == 310 && time == 7) {
+                    flight310_1.returnTicket();
+                } else if (flightNumber == 310 && time == 2) {
+                    flight310_2.returnTicket();
+                } else if (flightNumber == 320 && time == 7) {
+                    flight320_1.returnTicket();
+                } else if (flightNumber == 320 && time == 2){
+                    flight320_2.returnTicket();
+                }
+            }
+
             // continue adding a new ticket
             System.out.print("If you would like to get another ticket, please enter y / n: ");
             if (in.next().equalsIgnoreCase("n")) {
@@ -68,7 +81,7 @@ public class Main {
         }
 
         // print all the tickets in both flights
-        System.out.println("The tickets for flight 310 #1: ");
+        System.out.println("\nThe tickets for flight 310 #1: ");
         flight310_1.print();
         System.out.println("\n\nThe tickets for flight 310 #2: ");
         flight310_2.print();
